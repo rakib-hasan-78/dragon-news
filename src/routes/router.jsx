@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router";
+import Root from "../layouts/Root/Root";
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <h2>waka waka ehh eeeeh!</h2>
+        Component: Root,
+        children: []
     }
 ])
 
