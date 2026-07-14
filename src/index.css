@@ -31,6 +31,10 @@
         @apply w-full min-h-screen scroll-smooth;
     }
 
+    img{
+        @apply w-full h-full;
+    }
+
     h1,h2,h3,h4,h5,h6{
         @apply text-xl font-semibold;
     }

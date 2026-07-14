@@ -1,5 +1,6 @@
 import React from 'react';
-import MainLayOut from '../../layouts/HomeLayOut/HomeLayOut';
+import MainLayOut from '../../layouts/MainLayOut/MainLayOut';
+
 
 
 const Root = () => {
@@ -11,4 +12,3 @@ const Root = () => {
 };
 
 export default Root;
-MainLayOut

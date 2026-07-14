@@ -1,13 +1,20 @@
 import React from 'react';
+import Footer from './../../components/shared/Footer/Footer';
+import Header from './../../components/shared/Header/Header';
+import { Outlet } from 'react-router';
 
 const MainLayOut = () => {
     return (
         <div className={`w-full min-h-screen flex flex-wrap flex-col content-center justify-between`}>
-        <header></header>
-        <main className=' w-10/12 flex-1 container mx-auto border'>
-            hello
+        <header className='w-full'>
+            <Header />
+        </header>
+        <main className=' w-11/12 flex-1 container mx-auto border'>
+            <Outlet />
         </main>
-        <footer></footer>    
+        <footer className='w-full'>
+            <Footer />
+        </footer>    
         </div>
     );
 };
