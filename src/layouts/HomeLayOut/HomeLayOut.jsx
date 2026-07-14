@@ -1,9 +1,12 @@
 import React from 'react';
+import Header from '../../components/shared/Header/Header';
 
-const Root = () => {
+const HomeLayOut = () => {
     return (
         <div className={`w-full min-h-screen flex flex-wrap flex-col content-center justify-between`}>
-        <header></header>
+        <header>
+            <Header />
+        </header>
         <main className=' w-10/12 flex-1 container mx-auto border'>
             hello
         </main>
@@ -12,4 +15,4 @@ const Root = () => {
     );
 };
 
-export default Root;
+export default HomeLayOut;
