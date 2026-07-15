@@ -7,13 +7,9 @@
 
 
 
-@layer theme {
-    
-    :root{
-        --font-sans:  "Poppins", sans-serif;
-    }
-
-   
+@theme {
+    --color-custom-gray: oklch(54.26% 0.0012 17.2); 
+    --font-sans:  "Poppins", sans-serif;
 
 }
 

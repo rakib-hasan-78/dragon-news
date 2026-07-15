@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from './../../common/Logo/Logo';
+import Slogan from './../../common/Slogan/Slogan';
 
 const Header = () => {
     return (
@@ -7,8 +8,8 @@ const Header = () => {
             <div className='w-3/12 h-12'>
                 <Logo />
             </div>
-            <div>
-                hello
+            <div className='w-3/12 text-center'>
+                <Slogan />
             </div>
 
         </div>
