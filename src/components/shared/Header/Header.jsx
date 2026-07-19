@@ -7,18 +7,26 @@ import CurrentDate from '../../common/CurrentDate/CurrentDate';
 
 const Header = () => {
     return (
-        <div className={`w-full pt-12 pb-5 flex flex-wrap flex-col items-center content-center justify-center space-y-4 text-center`}>
-            <div className='w-3/12 h-12'>
-                <Logo />
-            </div>
-            <div className='w-3/12 text-center'>
-                <Slogan />
-            </div>
-            <div className='w-3/12 font-medium text-xl pb-5'>
-               <CurrentDate />
+
+        <div className={`w-full pt-12 flex flex-wrap flex-col items-center content-center justify-center text-center`}>
+            <div className='w-full flex flex-col content-center justify-center items-center space-y-1.5 mb-5'>
+                <div className='w-3/12 h-12'>
+                    <Logo />
+                </div>
+                <div className='w-3/12 text-center'>
+                    <Slogan />
+                </div>
+                <div className='w-3/12 font-medium text-xl'>
+                <CurrentDate />
+                </div>
+
+              </div>
+            <div>
+                hello
             </div>
 
         </div>
+
     );
 };
 
