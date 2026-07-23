@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from './../../common/Logo/Logo';
 import Slogan from './../../common/Slogan/Slogan';
 import CurrentDate from '../../common/CurrentDate/CurrentDate';
+import ScrollNews from './../ScrollNews/ScrollNews';
 
 
 
@@ -21,8 +22,8 @@ const Header = () => {
                 </div>
 
               </div>
-            <div>
-                hello
+            <div className='w-full my-3'>
+                <ScrollNews />
             </div>
 
         </div>
