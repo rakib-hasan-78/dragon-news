@@ -1,5 +1,6 @@
 import React from 'react';
-import Marquee from 'react-fast-marquee';
+import ScrollElement from './../../common/ScrollElement/ScrollElement';
+
 
 const ScrollNews = () => {
     return (
@@ -7,8 +8,8 @@ const ScrollNews = () => {
             <div className='bg-secondary py-4 w-1/12 text-center'>
                 <h1 className='text-white'>latest</h1>
             </div>
-            <div className='#'>
-                <Marquee>I can be a React component, multiple React components, or just some text.</Marquee>
+            <div className='w-10/12'>
+                <ScrollElement />
             </div>
         </div>
     );
