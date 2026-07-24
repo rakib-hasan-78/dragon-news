@@ -10,7 +10,9 @@ const HomeLayOut = () => {
         <main className=' w-10/12 flex-1 container mx-auto border'>
             hello
         </main>
-        <footer></footer>    
+        <footer>
+            
+        </footer>    
         </div>
     );
 };
