@@ -9,7 +9,7 @@ const MainLayOut = () => {
         <header className='w-full'>
             <Header />
         </header>
-        <main className=' w-11/12 flex-1 container mx-auto border'>
+        <main className=' w-11/12 flex-1 container mx-auto'>
             <Outlet />
         </main>
         <footer className='w-full'>
