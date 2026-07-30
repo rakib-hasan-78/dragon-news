@@ -1,12 +1,13 @@
 import React from 'react';
 import Categories from './../../common/Categories/Categories';
 
-const LeftAside = () => {
+const LeftAside = ({setSelectedCategory}) => {
     return (
         <div className='w-full'>
-            <div className='categories w-auto border'>
-                <Categories />
-                vishion kalo megh
+            <div className='categories w-auto'>
+                <Categories 
+                 setSelectedCategory
+                 ={setSelectedCategory} />
             </div>
         </div>
     );

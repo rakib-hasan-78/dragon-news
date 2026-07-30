@@ -1,15 +1,11 @@
 import React from 'react';
-import Header from '../../components/shared/Header/Header';
-import LeftAside from './../../components/shared/LeftAside/LeftAside';
+import { useLoaderData } from 'react-router';
 
 const HomeLayOut = () => {
+    const {data} = useLoaderData()
     return (
-        <div className={`w-full border min-h-screen grid grid-cols-12 *:border my-3 `}>
-        <aside className='left-aside col-span-3'>
-        <LeftAside />
-        </aside>
-        <section className='col-span-6' ></section>
-        <aside className='col-span-3'></aside>
+        <div className={`w-full border min-h-screen grid grid-cols-12 my-3 `}>
+            i will import data here ....... where it will be {data.length}
         </div>
     );
 };
