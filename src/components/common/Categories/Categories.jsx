@@ -5,7 +5,7 @@ const categoryData =
         fetch('../../../../public/data/categories.json')
             .then(data=>data.json());
 
-const Categories = ({setSelectedCategory}) => {
+const Categories = ({setSelectedCategory, selectedCategory }) => {
     const categories = use(categoryData);
   
     return (
@@ -13,7 +13,9 @@ const Categories = ({setSelectedCategory}) => {
             <h2 className='pb-5'>Categories ({categories.length})</h2>
             <div className='w-full grid grid-cols-1 gap-2 '>
                 {categories.map(category=>(
-                    <NavLink 
+                    <NavLink
+                        
+                        onClick={()=>setSelectedCategory(category.id)} 
                         key={category.id}
                         className={({isActive})=>` ${isActive ?'bg-base-200 text-red-500 font-medium':'text-stone-500/50'} p-2`}
                         

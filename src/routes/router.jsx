@@ -1,4 +1,4 @@
-import { createBrowserRouter, defer } from "react-router";
+import { createBrowserRouter } from "react-router";
 import Root from "../pages/Root/Root";
 import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
@@ -14,11 +14,9 @@ const router = createBrowserRouter([
                 index:true,
                 Component:Home,
                 loader:() => {
-                    const allNews=fetch('/data/news.json')
+                        return fetch('/data/news.json')
                         .then(response=>response.json())
-                        return defer({
-                            news:allNews
-                        })
+                        
                 }
             },
             {

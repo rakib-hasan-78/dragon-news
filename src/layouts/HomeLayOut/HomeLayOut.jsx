@@ -1,11 +1,14 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useOutletContext } from 'react-router';
 
 const HomeLayOut = () => {
-    const {data} = useLoaderData()
+    const selectedCategory = useOutletContext();
+    console.log((typeof selectedCategory));
+    const data = useLoaderData()
+    console.log(data);
     return (
-        <div className={`w-full border min-h-screen grid grid-cols-12 my-3 `}>
-            i will import data here ....... where it will be {data.length}
+        <div className={`border min-h-screen grid grid-cols-1 my-3 content-center text-center `}>
+         {data.length} 
         </div>
     );
 };
