@@ -6,7 +6,7 @@
 }
 
 /** light theme **/
-
+/** light theme **/
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
@@ -14,7 +14,7 @@
   --color-secondary: #D72050;
   --color-base: #9F9F9F;
   --color-base-200: #F3F3F3;
-  --color-base-300:#E7E7E7;
+  --color-base-300: #E7E7E7;
   --color-accent: #706F8F;
   --color-accent-content: #403F3F;
 }
@@ -24,6 +24,7 @@
 @theme {
     --color-custom-gray: oklch(54.26% 0.0012 17.2); 
     --font-sans:  "Poppins", sans-serif;
+    --color-accent-secondary: #F75B5F; 
 
 }
 
@@ -45,7 +46,7 @@
         @apply w-full h-full;
     }
 
-    h1,h2,h3,h4,h5,h6{
+    h1,h2,h3,h4{
         @apply text-xl font-semibold;
     }
 
