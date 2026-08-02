@@ -19,18 +19,23 @@ const MainLayOut = () => {
                     {/* Changed col-span-2 to col-span-3 */}
                     <aside className='col-span-3'>
                         <Suspense fallback={<CategoryAnimation />}>
-                            <LeftAside setSelectedCategory={setSelectedCategory} />
+                            <LeftAside 
+                            setSelectedCategory
+                            ={setSelectedCategory}
+                            selectedCategory 
+                            ={selectedCategory}
+                             />
                         </Suspense>
                     </aside>
                     
                     {/* Main section stays col-span-6 to keep balance, or 5 if you prefer a wider gap */}
                     <section className='col-span-6'>
-                        <Outlet context={selectedCategory} />
+                        <Outlet context={[selectedCategory, setSelectedCategory]} />
                     </section>
                     
                     {/* Changed col-span-2 to col-span-3 */}
                     <aside className='col-span-3'>
-                        <LeftAside />
+                        
                     </aside>
                 </div>
             </main>
