@@ -8,7 +8,7 @@ const HomeLayOut = () => {
     const data = useLoaderData()
     console.log(data);
     return (
-        <div className={` min-h-screen grid grid-cols-1 my-3 content-start text-center `}>
+        <div className={` min-h-screen grid grid-cols-1 my-3 content-start text-center gap-3 `}>
         <NewsCard />
         </div>
     );
