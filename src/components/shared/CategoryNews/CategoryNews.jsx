@@ -17,10 +17,27 @@ const CategoryNews = () => {
                     {data.title}
                     </h3>
                 </div>
+                <div className='w-full flex items-center space-x-3'>
+                    <span>Author:</span>
+                    <img 
+                    className='w-10 h-10 rounded-full self-center' src={data.author.img} alt="" />
+                    <h6 className='italic text-black/60'>{data.author.name}</h6>
+                </div>
+                <div className='w-full'>
+                    <span>date: {new Date(data.author.published_date).toLocaleDateString("en-US",{day:'2-digit',month:'short',year:'numeric'})}</span>
+                </div>
                 <div className='w-full'>
                     <p className='text-base leading-7 pr-3'>
                     {data.details}
                     </p>
+                </div>
+                <div className='w-full flex items-center space-x-3'>
+                    <h6 className='text-black/50 font-extralight'>tags:</h6>
+                    {
+                        data.tags.map(tag=>(
+                            <span className='text-xs text-black/50 hover:text-secondary transition-all cursor-pointer' key={tag}>#{tag} </span>
+                        ))
+                    }
                 </div>
                 <div className='self-start w-10/12 py-3'>
                     <Link
