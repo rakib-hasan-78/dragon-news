@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { use } from 'react';
 import MarqueeComponent from 'react-fast-marquee';
-const Marquee = MarqueeComponent.default;
 
+const breakingNews = fetch('/data/news.json')
+                        .then(res=>res.json())
+                        .then(news =>
+        news.filter(item => item.others.is_today_pick)
+    );
+const Marquee = MarqueeComponent.default;
 const ScrollElement = () => {
+const data = use(breakingNews)
+     
     return (
         <div className='w-auto h-auto'>
         <Marquee>
             <div className='flex items-center space-x-6 font-semibold text-lg'>
-            <p>Match Highlights: Germany vs Spain — as it happened   !   Match Highlights: Germany vs Spain as</p>
-            <p>Hasina fled from Bangladesh</p>
-            <p>No more candy</p>
-            <p>Finally rakib applied Marquee........</p>
+                
+                    {
+                        data
+                        .map(news=>(
+                            <p 
+                             key={news.id}
+                             >
+                             {news.title}   
+                             </p>
+                        ))
+                    }
+                
             </div>
         </Marquee>
             
