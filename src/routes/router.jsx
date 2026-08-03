@@ -29,7 +29,13 @@ const router = createBrowserRouter([
             },
             {
                 path:'/category/:id',
-                Component:CategoryNews
+                Component:CategoryNews,
+                loader: async ({params})=> {
+                        const data = await fetch(`/data/news.json`)
+                             .then(resp=>resp.json())
+
+                        return data.find(news=>news.id === params.id);
+                }
             }
         ]
     }

@@ -40,17 +40,20 @@ const loadButtonHandler = ()=>{
             news={news}
              />
         ))}
-        <div className='border p-6 '>
-            <button
-            onClick={loadButtonHandler}
-            className='btn btn-secondary'
-            >{
-                displayData<filterNews.length ?
-                'Load More' :
-                'Load Less'
-            }
-            </button>
-        </div>
+        
+        {displayNews.length >=4 &&(
+            <div className='p-6 '>
+                <button
+                onClick={loadButtonHandler}
+                className='btn btn-secondary'
+                >{
+                    displayData<filterNews.length ?
+                    'Load More' :
+                    'Load Less'
+                }
+                </button>
+            </div>
+            )}
         </div>
     );
 };
