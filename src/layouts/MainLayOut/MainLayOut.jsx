@@ -5,6 +5,7 @@ import { Outlet } from 'react-router';
 import LeftAside from './../../components/shared/LeftAside/LeftAside';
 import { Suspense } from 'react';
 import CategoryAnimation from './../../SkeletonAnimation/CategoryAnimation/CategoryAnimation';
+import SocialButton from './../../components/common/SocialButton/SocialButton';
 
 const MainLayOut = () => {
     const [selectedCategory, setSelectedCategory] = useState(0);
@@ -34,8 +35,10 @@ const MainLayOut = () => {
                     </section>
                     
                     {/* Changed col-span-2 to col-span-3 */}
-                    <aside className='col-span-3'>
-                        
+                    <aside className='col-span-3 flex justify-end'>
+                        <div className='w-full'>
+                            <SocialButton />
+                        </div>
                     </aside>
                 </div>
             </main>

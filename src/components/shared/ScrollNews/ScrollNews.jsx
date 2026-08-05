@@ -7,7 +7,7 @@ import MarqueeAnimation from '../../../SkeletonAnimation/MarqueeAnimation/Marque
 const ScrollNews = () => {
     
     return (
-        <div className='w-11/12 mx-auto bg-base-200 p-3 flex items-center space-x-7'>
+        <div className='w-11/12 mx-auto bg-base-200 p-1.5  flex items-center space-x-7'>
             <div className='bg-secondary py-4 w-1/12 text-center'>
                 <h1 className='text-white'>latest</h1>
             </div>

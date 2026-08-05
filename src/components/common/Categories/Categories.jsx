@@ -20,7 +20,7 @@ const Categories = ({setSelectedCategory, selectedCategory }) => {
                     "font-semibold bg-base-300 text-black/80":
                     "text-black/60 font-medium" 
                     }`}>
-                    {category.name}
+                    {category.name} 
                     </button>
                 ))} 
 
