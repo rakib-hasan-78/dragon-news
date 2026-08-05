@@ -5,7 +5,7 @@ import { Outlet } from 'react-router';
 import LeftAside from './../../components/shared/LeftAside/LeftAside';
 import { Suspense } from 'react';
 import CategoryAnimation from './../../SkeletonAnimation/CategoryAnimation/CategoryAnimation';
-import SocialButton from './../../components/common/SocialButton/SocialButton';
+import RightAside from './../../components/shared/RightAside/RightAside';
 
 const MainLayOut = () => {
     const [selectedCategory, setSelectedCategory] = useState(0);
@@ -14,7 +14,7 @@ const MainLayOut = () => {
             <header className='w-full'>
                 <Header />
             </header>
-            <main className='w-11/12 flex-1 container mx-auto'>
+            <main className='w-11/12 flex-1 container mx-auto my-5'>
                 {/* Your gap-6 will now be perfectly distributed between the columns */}
                 <div className='grid grid-cols-12 gap-6'>
                     {/* Changed col-span-2 to col-span-3 */}
@@ -36,9 +36,7 @@ const MainLayOut = () => {
                     
                     {/* Changed col-span-2 to col-span-3 */}
                     <aside className='col-span-3 flex justify-end'>
-                        <div className='w-full'>
-                            <SocialButton />
-                        </div>
+                        <RightAside />
                     </aside>
                 </div>
             </main>

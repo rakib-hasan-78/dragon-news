@@ -33,7 +33,10 @@ const loadButtonHandler = ()=>{
 }
 
     return (
-        <div className={` min-h-screen grid grid-cols-1 my-3 content-start text-center gap-3 `}>
+        <div className={` min-h-screen grid grid-cols-1 content-start text-center gap-3`}>
+        <div className='w-10/12 mx-auto pb-2'>
+            <h3 className='text-left'>Dragon news home</h3>
+        </div>
         {displayNews.map(news=>(
             <NewsCard
             key={news.id}
