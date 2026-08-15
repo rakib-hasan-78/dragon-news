@@ -3,7 +3,7 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const SocialButton = () => {
     return (
-        <div className='w-full  flex flex-col items-center justify-end space-y-3'>
+        <div className='w-full  flex flex-col items-center justify-end space-y-3 pb-5'>
         {/* Google */}
         <button className="btn bg-white hover:bg-blue-600 text-blue-500 hover:text-white border border-blue-600 hover:border-blue-500 transition-all ease-in-out self-end w-full">
         <FaGoogle/>

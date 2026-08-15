@@ -11,7 +11,7 @@
             <div className='w-10/12 mx-auto border border-base-300'>
                 {/* card header */}
 
-                <div className='px-2 py-3 bg-base-200 flex items-center justify-between'>
+                <div className='px-2 py-8 bg-base-200 flex items-center justify-between'>
                 {/* news author credentials...... */}
                 <div className='flex items-center space-x-5 w-5/12'>
                 {/* author image */}
