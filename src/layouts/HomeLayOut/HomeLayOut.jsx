@@ -6,7 +6,7 @@ import { useState } from 'react';
 const HomeLayOut = () => {
     const [selectedCategory] = useOutletContext();
     const [filterNews, setFilterNews] = useState([]);
-    const [displayData, setDisplayData] = useState(4)
+    const [displayData, setDisplayData] = useState(3)
     const data = useLoaderData();
    
 useEffect(() => {
@@ -26,9 +26,9 @@ useEffect(() => {
 const displayNews = filterNews.slice(0, displayData);
 const loadButtonHandler = ()=>{
     if (displayData<filterNews.length) {
-        setDisplayData(prev=>prev + 4)
+        setDisplayData(prev=>prev + 3)
     } else{
-        setDisplayData(4)
+        setDisplayData(3)
     }
 }
 
@@ -44,7 +44,7 @@ const loadButtonHandler = ()=>{
              />
         ))}
         
-        {displayNews.length >=4 &&(
+        {displayNews.length >=3 &&(
             <div className='p-6 '>
                 <button
                 onClick={loadButtonHandler}
