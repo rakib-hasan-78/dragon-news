@@ -9,7 +9,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         Component: Root,
-        // 🏠 GLOBAL DEFAULTS (Acts as your base settings)
+        
         handle: {
             leftSideBar: true,
             rightSideBar: true,
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
                 handle: {
                     leftSideBar: false,
                     rightSideBar: true,
-                    promotionBG: true,
+                    promotionBG: false,
                 },
             },
         ],
