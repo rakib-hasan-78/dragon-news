@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLoaderData, useOutletContext } from 'react-router';
+import { useLoaderData, useLocation, useOutletContext } from 'react-router';
 import NewsCard from './../../components/shared/NewsCard/NewsCard';
 import { useState } from 'react';
 
@@ -8,6 +8,8 @@ const HomeLayOut = () => {
     const [filterNews, setFilterNews] = useState([]);
     const [displayData, setDisplayData] = useState(3)
     const data = useLoaderData();
+
+
    
 useEffect(() => {
     if (selectedCategory === 0) {

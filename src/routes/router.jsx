@@ -7,40 +7,66 @@ import CategoryNews from "../components/shared/CategoryNews/CategoryNews";
 
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: "/",
         Component: Root,
+        // 🏠 GLOBAL DEFAULTS (Acts as your base settings)
+        handle: {
+            leftSideBar: true,
+            rightSideBar: true,
+            promotionBG: true, // Default: show the background
+        },
         children: [
             {
-                index:true,
-                Component:Home,
-                loader:() => {
-                        return fetch('/data/news.json')
-                        .then(response=>response.json())
-                        
+                index: true,
+                Component: Home,
+                loader: () => {
+                    return fetch("/data/news.json")
+                        .then((response) => response.json());
+                },
+                // Explicitly declare for Home page
+                handle: {
+                    leftSideBar: true,
+                    rightSideBar: true,
+                    promotionBG: true,
                 }
             },
             {
-                path:'about',
-                Component:About
+                path: "about",
+                Component: About,
+                // ❌ TURN OFF on About page
+                handle: {
+                    leftSideBar: false,
+                    rightSideBar: false,
+                    promotionBG: false, 
+                },
             },
             {
-                path:'news',
-                Component:News
-            },
-            {
-                path:'/category/:id',
-                Component:CategoryNews,
-                loader: async ({params})=> {
-                        const data = await fetch(`/data/news.json`)
-                             .then(resp=>resp.json())
-
-                        return data.find(news=>news.id === params.id);
+                path: "news",
+                Component: News,
+                // ❌ TURN OFF on News page
+                handle: {
+                    leftSideBar: true,
+                    rightSideBar: true,
+                    promotionBG: false,
                 }
-            }
-        ]
-    }
-])
-
-
+            },
+            {
+                path: "category/:id",
+                Component: CategoryNews,
+                loader: async ({ params }) => {
+                    const response = await fetch("/data/news.json");
+                    const data = await response.json();
+                    return data.find((news) => news.id === params.id);
+                },
+                // 🟢 TURN ON on Category pages
+                handle: {
+                    leftSideBar: false,
+                    rightSideBar: true,
+                    promotionBG: true,
+                },
+            },
+        ],
+    },
+]);
 
 export default router;

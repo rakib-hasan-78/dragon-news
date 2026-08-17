@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link, useLoaderData } from 'react-router';
+import { Link, useLoaderData, useLocation } from 'react-router';
 
 const CategoryNews = () => {
-    // const {id} = useParams();
     const data = useLoaderData()
-    // const newsDetail = data.find(news=>news.id=== id)
+    const location = useLocation();
+    console.log(location);
     return (
         <div className='w-full mx-auto m-3'>
             <h1 className='pb-2'>Dragon news</h1>
