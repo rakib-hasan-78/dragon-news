@@ -34,7 +34,7 @@ const Header = () => {
 
                 )
               }
-
+              
             <div className='w-11/12 my-3 flex items-center justify-between'>
                 <nav className='w-7/12 flex items-center justify-end-safe p-4'>
                 <Nav></Nav>

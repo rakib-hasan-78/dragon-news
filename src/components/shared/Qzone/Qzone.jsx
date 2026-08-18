@@ -3,18 +3,12 @@ import swimming from '../../../assets/swimming.png';
 import classRoom from '../../../assets/class.png';
 import playGround from '../../../assets/playground.png';
 import bg from '../../../assets/bg.png';
-import { Link, useMatches } from 'react-router';
+import { Link,} from 'react-router';
+import useLayoutConfig from '../../../customHooks/useLayoutConfig';
 
 const Qzone = () => {
-    const matches = useMatches();
-    
-    // 🟢 THE BULLETPROOF LAYER CHECK:
-    // We reverse the array so we look at the specific page first, then fall back to the root.
-    // .find() grabs the first match that explicitly sets the flag.
-    const activeLayoutConfig = [...matches].reverse().find(match => match.handle?.promotionBG !== undefined);
-    
-    // Read the value. If NO page defines it, it safely defaults to true (from your Root fallback!)
-    const matchedItem = activeLayoutConfig ? activeLayoutConfig.handle?.promotionBG === true : true;
+
+    const {promotionBG} = useLayoutConfig()
 
     return (
         <>
@@ -33,8 +27,8 @@ const Qzone = () => {
             </div>
         </div>
         {
-            /* 🟢 This will now correctly toggle exactly based on your overrides! */
-            matchedItem && (
+            /* Handling promotion background based on routes! */
+            promotionBG && (
                 <div className='w-full my-6'>
                     <img src={bg} alt="bg-image" />
                 </div>
