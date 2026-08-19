@@ -8,7 +8,10 @@ const User = () => {
                 <img src={DummyUser} alt="user" />
             </div>
             <div>
-                <Link className='btn py-6 px-10 text-base-200 bg-accent-content capitalize text-xl'>login</Link>
+                <Link 
+                className='btn py-6 px-10 text-base-200 bg-accent-content capitalize text-xl'>
+                login
+                </Link>
             </div>
         </div>
     );

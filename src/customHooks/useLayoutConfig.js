@@ -9,12 +9,12 @@ const useLayoutConfig =() => {
     // applying for entire section located on root
 
     const isEnabled = (key)=> 
-        matches?.every(match=>match?.handle?.[key]!== false);
+        matches.every(match=>match?.handle?.[key]!== false);
     
     // for any specific contents to handle
 
     const getConfig = (key) => 
-        [...matches]?.reverse()
+        [...matches].reverse()
         ?.find(match=>match?.handle?.[key]!== undefined)
         ?.handle?.[key] ?? true;
 
@@ -22,6 +22,7 @@ const useLayoutConfig =() => {
     
     const leftSideBar = isEnabled("leftSideBar");
     const rightSideBar = isEnabled("rightSideBar");
+    const footerHandle = isEnabled("footerHandle");
 
     // applying for specific contents 
 
@@ -33,7 +34,9 @@ const useLayoutConfig =() => {
     return {
         leftSideBar,
         rightSideBar,
-        promotionBG
+        promotionBG,
+        footerHandle,
+        getConfig,
     }
 
 }

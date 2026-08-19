@@ -10,7 +10,7 @@ import useLayoutConfig from '../../customHooks/useLayoutConfig';
 
 const MainLayOut = () => {
     const [selectedCategory, setSelectedCategory] = useState(0);
-    const {leftSideBar, rightSideBar} = useLayoutConfig()
+    const {leftSideBar, rightSideBar, footerHandle} = useLayoutConfig()
     
     return (
         <div className="w-full min-h-screen flex flex-col content-center justify-between">
@@ -45,7 +45,10 @@ const MainLayOut = () => {
                 </div>
             </main>
             <footer className='w-full'>
+            {
+               footerHandle && 
                 <Footer />
+            }
             </footer>    
         </div>
     );

@@ -63,6 +63,8 @@ const router = createBrowserRouter([
                     leftSideBar: false,
                     rightSideBar: true,
                     promotionBG: false,
+                    scrollNews:false,
+                    footerHandle: false,
                 },
             },
         ],

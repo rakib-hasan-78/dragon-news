@@ -5,12 +5,16 @@ import CurrentDate from '../../common/CurrentDate/CurrentDate';
 import ScrollNews from './../ScrollNews/ScrollNews';
 import Nav from './../Nav/Nav';
 import User from './../User/User';
-import { useLocation } from 'react-router';
+import useLayoutConfig from '../../../customHooks/useLayoutConfig';
+
 
 
 
 const Header = () => {
-    const location = useLocation();
+
+    const {getConfig} = useLayoutConfig();
+    const scrollNews = getConfig("scrollNews");
+    
     return (
 
         <div className={`w-full pt-12 flex flex-col items-center content-center justify-center text-center`}>
@@ -27,14 +31,18 @@ const Header = () => {
 
               </div>
               {
-                location.pathname ==='/' && (
+                scrollNews &&
                 <div className='w-full my-3'>
                     <ScrollNews />
                 </div>
 
-                )
+                
               }
-              
+
+
+           { 
+
+            scrollNews &&  
             <div className='w-11/12 my-3 flex items-center justify-between'>
                 <nav className='w-7/12 flex items-center justify-end-safe p-4'>
                 <Nav></Nav>
@@ -43,6 +51,8 @@ const Header = () => {
                 <User />
                 </div>
             </div>
+            
+            }
 
         </div>
 
