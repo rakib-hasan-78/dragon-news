@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
 import News from "../pages/News/News";
 import CategoryNews from "../components/shared/CategoryNews/CategoryNews";
+import Authentication from "../components/authLayout/Authentication/Authentication";
 
 const router = createBrowserRouter([
     {
@@ -65,8 +66,20 @@ const router = createBrowserRouter([
                     promotionBG: false,
                     scrollNews:false,
                     footerHandle: false,
+                    navContent: false,
                 },
             },
+            {
+                path:'/auth',
+                element: <Authentication />,
+                handle:{
+                    leftSideBar: false,
+                    rightSideBar:false,
+                    scrollNews:false,
+                    headerContent:false,
+                    footerHandle:false,
+                }
+            }
         ],
     },
 ]);

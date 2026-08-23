@@ -12,12 +12,14 @@ import useLayoutConfig from '../../../customHooks/useLayoutConfig';
 
 const Header = () => {
 
-    const {getConfig} = useLayoutConfig();
+    const {getConfig, headerContent, navContent} = useLayoutConfig();
     const scrollNews = getConfig("scrollNews");
     
     return (
 
         <div className={`w-full pt-12 flex flex-col items-center content-center justify-center text-center`}>
+            {
+            headerContent &&
             <div className='w-full flex flex-col content-center justify-center items-center space-y-1.5 mb-5'>
                 <div className='w-3/12 h-12'>
                     <Logo />
@@ -30,6 +32,8 @@ const Header = () => {
                 </div>
 
               </div>
+
+            }
               {
                 scrollNews &&
                 <div className='w-full my-3'>
@@ -42,7 +46,7 @@ const Header = () => {
 
            { 
 
-            scrollNews &&  
+            navContent &&              
             <div className='w-11/12 my-3 flex items-center justify-between'>
                 <nav className='w-7/12 flex items-center justify-end-safe p-4'>
                 <Nav></Nav>

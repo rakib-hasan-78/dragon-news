@@ -19,7 +19,7 @@ const MainLayOut = () => {
             </header>
             <main className='w-11/12 flex-1 container mx-auto my-5'>
                 <div className='grid grid-cols-12 gap-6'>
-                    <aside className='col-span-3'>
+                    <aside className='col-span-3 top-0 h-fit sticky'>
                         {/* Handle left Aside according to routing */}
                         {leftSideBar && (
                             <Suspense fallback={<CategoryAnimation />}>
@@ -35,7 +35,7 @@ const MainLayOut = () => {
                         <Outlet context={[selectedCategory, setSelectedCategory]} />
                     </section>
                     
-                    <aside className='col-span-3 flex justify-end'>
+                    <aside className='col-span-3 flex justify-end top-0 h-fit sticky'>
                         {/* Handle right Aside according to routing  */}
                         {
                             rightSideBar && 

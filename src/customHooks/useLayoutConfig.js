@@ -27,6 +27,8 @@ const useLayoutConfig =() => {
     // applying for specific contents 
 
     const promotionBG = getConfig("promotionBG");
+    const headerContent = getConfig('headerContent');
+    const navContent = getConfig('navContent');
     
 
     
@@ -37,6 +39,8 @@ const useLayoutConfig =() => {
         promotionBG,
         footerHandle,
         getConfig,
+        headerContent,
+        navContent
     }
 
 }
