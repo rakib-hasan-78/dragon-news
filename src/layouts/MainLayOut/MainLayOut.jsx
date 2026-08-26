@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Footer from './../../components/shared/Footer/Footer';
 import Header from './../../components/shared/Header/Header';
-import { Outlet, } from 'react-router';
+import { Outlet,} from 'react-router';
 import LeftAside from './../../components/shared/LeftAside/LeftAside';
 import { Suspense } from 'react';
 import CategoryAnimation from './../../SkeletonAnimation/CategoryAnimation/CategoryAnimation';
@@ -10,10 +10,12 @@ import useLayoutConfig from '../../customHooks/useLayoutConfig';
 
 const MainLayOut = () => {
     const [selectedCategory, setSelectedCategory] = useState(0);
-    const {leftSideBar, rightSideBar, footerHandle} = useLayoutConfig()
-    
+    const {leftSideBar, rightSideBar, footerHandle} = useLayoutConfig();
     return (
-        <div className="w-full min-h-screen flex flex-col content-center justify-between">
+        <div 
+            className=
+            {`w-full min-h-screen flex flex-col content-center justify-between`}
+            >
             <header className='w-full'>
                 <Header />
             </header>

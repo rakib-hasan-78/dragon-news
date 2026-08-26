@@ -10,7 +10,7 @@ const User = () => {
             <div>
                 <NavLink 
                 className='btn py-6 px-10 text-base-200 bg-accent-content capitalize text-xl'
-                to={'/auth'}>
+                to={'/auth/login'}>
                 login
                 </NavLink>
             </div>
