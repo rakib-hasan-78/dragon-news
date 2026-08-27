@@ -8,6 +8,7 @@ import About from "../pages/About/About";
 import News from "../pages/News/News";
 import CategoryNews from "../components/shared/CategoryNews/CategoryNews";
 import LoginAuthentication from "../components/authLayout/LoginAuthentication/LoginAuthentication";
+import Registration from "../components/authLayout/Registration/Registration";
 
 
 const router = createBrowserRouter([
@@ -135,6 +136,12 @@ const router = createBrowserRouter([
             {
                 path: "login",
                 Component: LoginAuthentication,
+            },
+
+            // /auth/signup
+            {
+                path: 'signup',
+                Component: Registration
             }
         ]
     }
