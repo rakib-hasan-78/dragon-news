@@ -30,9 +30,6 @@ const useLayoutConfig =() => {
     const headerContent = getConfig('headerContent');
     const navContent = getConfig('navContent');
     
-
-    
-
     return {
         leftSideBar,
         rightSideBar,
@@ -40,7 +37,8 @@ const useLayoutConfig =() => {
         footerHandle,
         getConfig,
         headerContent,
-        navContent
+        navContent,
+        
     }
 
 }
