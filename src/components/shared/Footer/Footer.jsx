@@ -1,7 +1,9 @@
 import React from 'react';
 import Logo from './../../common/Logo/Logo';
+import { useProvider } from './../../../customHooks/AuthProvider';
 
 const Footer = () => {
+    const {email} = useProvider();
     return (
         <div className='w-full'>
             <div className="footer footer-horizontal footer-center bg-violet-400 text-primary-content p-10">

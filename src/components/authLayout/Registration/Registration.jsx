@@ -1,30 +1,65 @@
 import React from 'react';
 import { Link } from 'react-router';
+import useDataPicker from '../../../customHooks/useDataPicker';
 
 const Registration = () => {
+    const [data, dataHandler, reset] = useDataPicker({
+      name:'',
+      url:'',
+      email:'',
+      password:'',
+      checkbox:false
+    });
+    const registerHandler = (e)=>{
+      e.preventDefault();
+      console.log(data);
+    }
     return (
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="pt-7 flex items-center justify-center">
         <h2>register your account</h2>
       </div>
       <div className="card-body">
-        <form className="fieldset">
+        <form onSubmit={registerHandler} className="fieldset">
           <label className="label">Your name</label>
-          <input type="text" className="input" placeholder="your name" />
+          <input
+           onChange={(e)=> dataHandler(e.target.name, e.target.value)}
+           name='name'
+           type="text"
+           className="input" 
+           placeholder="your name" />
           <label className="label">photo URL</label>
-          <input type="url" className="input" placeholder="your photo url" />
+          <input
+           onChange={(e)=> dataHandler(e.target.name, e.target.value)}
+           name='url'
+           type="url" 
+           className="input" 
+           placeholder="your photo url" />
           <label className="label">Email</label>
-          <input type="email" className="input" placeholder="Email" />
+          <input
+           onChange={(e)=> dataHandler(e.target.name, e.target.value)}
+           name='email'
+           type="email" 
+           className="input" 
+           placeholder="Email" />
           <label className="label">Password</label>
-          <input type="password" className="input" placeholder="Password" />
-          <label className="label">re-Type Password</label>
-          <input type="password" className="input" placeholder="Password" />
+          <input
+           onChange={(e)=> dataHandler(e.target.name, e.target.value)}
+           name='password'
+           type="password" 
+           className="input" 
+           placeholder="Password" />
           <div className='space-x-2'>
           <label className="label"></label>
-          <input type="checkbox" className="checkbox" placeholder="Password" />
+          <input
+           onChange={(e)=> dataHandler(e.target.name, e.target.checked)} 
+           name='checkbox'
+           type="checkbox" 
+           className="checkbox" 
+           placeholder="Password" />
           <span className='link link-hover'>Accept Term & Conditions</span>  
           </div>
-          <button className="btn btn-neutral mt-4">register</button>
+          <button type='submit' className="btn btn-neutral mt-4">register</button>
         </form>
       </div>
       <div className="flex flex-col px-4 space-y-2.5 pb-7">
