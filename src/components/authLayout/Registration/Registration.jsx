@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import useDataPicker from '../../../customHooks/useDataPicker';
+import { toast } from 'react-toastify';
+import { createUsers } from '../../../Firebase/firebaseHandlers';
 
 const Registration = () => {
     const [data, dataHandler, reset] = useDataPicker({
@@ -11,8 +13,22 @@ const Registration = () => {
       checkbox:false
     });
     const registerHandler = (e)=>{
-      // e.preventDefault();
-      console.log(data);
+      e.preventDefault();
+      if(!data.checkbox) {
+        return toast.error('Please agree with our T&C',{
+          position:'top-center'
+        })
+      } 
+      else{
+        createUsers(
+          data.email, 
+          data.password,
+        data.name,
+        data.url,
+      )
+        reset();
+        toast.success(`Hey ${data.name.split(" ")[0]}! account created successfully!`)
+      }
     }
     return (
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
