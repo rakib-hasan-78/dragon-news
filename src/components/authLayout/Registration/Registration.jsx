@@ -11,7 +11,7 @@ const Registration = () => {
       checkbox:false
     });
     const registerHandler = (e)=>{
-      e.preventDefault();
+      // e.preventDefault();
       console.log(data);
     }
     return (
