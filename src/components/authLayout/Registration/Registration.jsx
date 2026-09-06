@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router';
 import useDataPicker from '../../../customHooks/useDataPicker';
 import { toast } from 'react-toastify';
-import { createUsers } from '../../../Firebase/firebaseHandlers';
+import { useProvider } from '../../../customHooks/AuthProvider';
+
 
 const Registration = () => {
+    const {createUsers} = useProvider();
     const [data, dataHandler, reset] = useDataPicker({
       name:'',
       url:'',
@@ -12,7 +14,7 @@ const Registration = () => {
       password:'',
       checkbox:false
     });
-    const registerHandler = (e)=>{
+    const registerHandler = async(e)=>{
       e.preventDefault();
       if(!data.checkbox) {
         return toast.error('Please agree with our T&C',{
@@ -20,14 +22,21 @@ const Registration = () => {
         })
       } 
       else{
-        createUsers(
+        const {success, error}= await createUsers(
           data.email, 
           data.password,
         data.name,
         data.url,
       )
+      if(success){
         reset();
-        toast.success(`Hey ${data.name.split(" ")[0]}! account created successfully!`)
+        toast.success(`Hey ${data.name.split(" ")[0]}! account created successfully!`,{
+          position:'top-center'
+        })
+        
+      } else {
+        toast.error(error, {position:'top-center'})
+      }
       }
     }
     return (
@@ -39,6 +48,7 @@ const Registration = () => {
         <form onSubmit={registerHandler} className="fieldset">
           <label className="label">Your name</label>
           <input
+          value={data.name}
            onChange={(e)=> dataHandler(e.target.name, e.target.value)}
            name='name'
            type="text"
@@ -46,6 +56,7 @@ const Registration = () => {
            placeholder="your name" />
           <label className="label">photo URL</label>
           <input
+          value={data.url}
            onChange={(e)=> dataHandler(e.target.name, e.target.value)}
            name='url'
            type="url" 
@@ -53,6 +64,7 @@ const Registration = () => {
            placeholder="your photo url" />
           <label className="label">Email</label>
           <input
+          value={data.email}
            onChange={(e)=> dataHandler(e.target.name, e.target.value)}
            name='email'
            type="email" 
@@ -60,6 +72,7 @@ const Registration = () => {
            placeholder="Email" />
           <label className="label">Password</label>
           <input
+          value={data.password}
            onChange={(e)=> dataHandler(e.target.name, e.target.value)}
            name='password'
            type="password" 
@@ -68,6 +81,7 @@ const Registration = () => {
           <div className='space-x-2'>
           <label className="label"></label>
           <input
+          value={data.checkbox}
            onChange={(e)=> dataHandler(e.target.name, e.target.checked)} 
            name='checkbox'
            type="checkbox" 

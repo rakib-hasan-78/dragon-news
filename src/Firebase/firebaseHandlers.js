@@ -20,11 +20,11 @@ const createUsers = async(email, password,name, url)=>{
     });
 
     console.log(user);
-    return user;
+    return {success:true, user};
 
 
     } catch (error) {
-        console.log(error.message);
+        return {success:false, error: error.message}
     }
 }
 
