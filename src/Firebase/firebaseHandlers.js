@@ -1,9 +1,10 @@
 
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 import {auth} from "./Firebase.init";
 
 
 // creating users using email & password ===>
+
 const createUsers = async(email, password,name, url)=>{
 
     try {
@@ -24,8 +25,16 @@ const createUsers = async(email, password,name, url)=>{
 
 
     } catch (error) {
-        return {success:false, error: error.message}
+        return {success:false, error: error.message, code: error.code}
     }
+};
+// login state observer from firebase==>
+
+const authStateHandler =(cb)=>{
+    return onAuthStateChanged(
+        auth, 
+        cb
+    )
 }
 
-export {createUsers};
+export {createUsers, authStateHandler};

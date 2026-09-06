@@ -21,21 +21,29 @@ const Registration = () => {
         })
       } 
       else{
-        const {success, error}= await createUsers(
-          data.email, 
-          data.password,
-        data.name,
-        data.url,
-      )
-      if(success){
-        reset();
-        toast.success(`Hey ${data.name.split(" ")[0]}! account created successfully!`,{
-          position:'top-center'
-        })
-        
-      } else {
-        toast.error(error, {position:'top-center'})
-      }
+          const {success, error, code}= await createUsers(
+            data.email, 
+            data.password,
+          data.name,
+          data.url,
+        )
+        if(success){
+          reset();
+          toast.success(`Hey ${data.name.split(" ")[0]}! account created successfully!`,{
+            position:'top-center'
+          })
+          
+        }
+
+        else if (code) {
+          toast.error(
+              code.replace('auth/','').replaceAll('-', ' '),
+              { position: 'top-center' }
+          );
+        }
+        else {
+          toast.error(error, {position:'top-center'})
+        }
       }
     }
     return (
