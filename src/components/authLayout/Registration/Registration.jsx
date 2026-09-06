@@ -2,11 +2,10 @@ import React from 'react';
 import { Link } from 'react-router';
 import useDataPicker from '../../../customHooks/useDataPicker';
 import { toast } from 'react-toastify';
-import { useProvider } from '../../../customHooks/AuthProvider';
-
+import {useAuth} from '../../../customHooks/useAuth'
 
 const Registration = () => {
-    const {createUsers} = useProvider();
+    const {createUsers} = useAuth();
     const [data, dataHandler, reset] = useDataPicker({
       name:'',
       url:'',
