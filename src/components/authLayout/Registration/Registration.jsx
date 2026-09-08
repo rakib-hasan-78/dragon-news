@@ -1,53 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router';
-import useDataPicker from '../../../customHooks/useDataPicker';
-import { toast } from 'react-toastify';
-import {useAuth} from '../../../customHooks/useAuth'
+import React from "react";
+import { Link } from "react-router";
+import useDataPicker from "../../../customHooks/useDataPicker";
+import { toast } from "react-toastify";
+import { useAuth } from "../../../customHooks/useAuth";
 
 const Registration = () => {
-    const {createUsers} = useAuth();
-    const [data, dataHandler, reset] = useDataPicker({
-      name:'',
-      url:'',
-      email:'',
-      password:'',
-      checkbox:false
-    });
-    const registerHandler = async(e)=>{
-      e.preventDefault();
-      if(!data.checkbox) {
-        return toast.error('Please agree with our T&C',{
-          position:'top-center'
-        })
-      } 
-      else{
-          const {success, error, code}= await createUsers(
-            data.email, 
-            data.password,
-          data.name,
-          data.url,
-        )
-        if(success){
-          reset();
-          toast.success(`Hey ${data.name.split(" ")[0]}! account created successfully!`,{
-            position:'top-center'
-          })
-          
-        }
-
-        else if (code) {
-          toast.error(
-              code.replace('auth/','').replaceAll('-', ' '),
-              { position: 'top-center' }
-          );
-        }
-        else {
-          toast.error(error, {position:'top-center'})
-        }
+  const { createUsers } = useAuth();
+  const [data, dataHandler, reset] = useDataPicker({
+    name: "",
+    url: "",
+    email: "",
+    password: "",
+    checkbox: false,
+  });
+  const registerHandler = async (e) => {
+    e.preventDefault();
+    if (!data.checkbox) {
+      return toast.error("Please agree with our T&C", {
+        position: "top-center",
+      });
+    } else {
+      const { success, error, code } = await createUsers(
+        data.email,
+        data.password,
+        data.name,
+        data.url,
+      );
+      if (success) {
+        reset();
+        toast.success(
+          `Hey ${data.name.split(" ")[0]}! account created successfully!`,
+          {
+            position: "top-center",
+          },
+        );
+      } else if (code) {
+        toast.error(code.replace("auth/", "").replaceAll("-", " "), {
+          position: "top-center",
+        });
+      } else {
+        toast.error(error, { position: "top-center" });
       }
     }
-    return (
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+  };
+  return (
+    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="pt-7 flex items-center justify-center">
         <h2>register your account</h2>
       </div>
@@ -55,48 +52,55 @@ const Registration = () => {
         <form onSubmit={registerHandler} className="fieldset">
           <label className="label">Your name</label>
           <input
-          value={data.name}
-           onChange={(e)=> dataHandler(e.target.name, e.target.value)}
-           name='name'
-           type="text"
-           className="input" 
-           placeholder="your name" />
+            value={data.name}
+            onChange={(e) => dataHandler(e.target.name, e.target.value)}
+            name="name"
+            type="text"
+            className="input"
+            placeholder="your name"
+          />
           <label className="label">photo URL</label>
           <input
-          value={data.url}
-           onChange={(e)=> dataHandler(e.target.name, e.target.value)}
-           name='url'
-           type="url" 
-           className="input" 
-           placeholder="your photo url" />
+            value={data.url}
+            onChange={(e) => dataHandler(e.target.name, e.target.value)}
+            name="url"
+            type="url"
+            className="input"
+            placeholder="your photo url"
+          />
           <label className="label">Email</label>
           <input
-          value={data.email}
-           onChange={(e)=> dataHandler(e.target.name, e.target.value)}
-           name='email'
-           type="email" 
-           className="input" 
-           placeholder="Email" />
+            value={data.email}
+            onChange={(e) => dataHandler(e.target.name, e.target.value)}
+            name="email"
+            type="email"
+            className="input"
+            placeholder="Email"
+          />
           <label className="label">Password</label>
           <input
-          value={data.password}
-           onChange={(e)=> dataHandler(e.target.name, e.target.value)}
-           name='password'
-           type="password" 
-           className="input" 
-           placeholder="Password" />
-          <div className='space-x-2'>
-          <label className="label"></label>
-          <input
-          value={data.checkbox}
-           onChange={(e)=> dataHandler(e.target.name, e.target.checked)} 
-           name='checkbox'
-           type="checkbox" 
-           className="checkbox" 
-           placeholder="Password" />
-          <span className='link link-hover'>Accept Term & Conditions</span>  
+            value={data.password}
+            onChange={(e) => dataHandler(e.target.name, e.target.value)}
+            name="password"
+            type="password"
+            className="input"
+            placeholder="Password"
+          />
+          <div className="space-x-2">
+            <label className="label"></label>
+            <input
+              value={data.checkbox}
+              onChange={(e) => dataHandler(e.target.name, e.target.checked)}
+              name="checkbox"
+              type="checkbox"
+              className="checkbox"
+              placeholder="Password"
+            />
+            <span className="link link-hover">Accept Term & Conditions</span>
           </div>
-          <button type='submit' className="btn btn-neutral mt-4">register</button>
+          <button type="submit" className="btn btn-neutral mt-4">
+            register
+          </button>
         </form>
       </div>
       <div className="flex flex-col px-4 space-y-2.5 pb-7">
@@ -151,19 +155,16 @@ const Registration = () => {
           register with GitHub
         </button>
         <span className="font-semibold text-center text-xs">
-            already Have An Account ?
-            <Link
-             className="text-accent-secondary px-2"
-             to={`/auth/login`}
-             >
-             login
-             </Link>
+          already Have An Account ?
+          <Link className="text-accent-secondary px-2" to={`/auth/login`}>
+            login
+          </Link>
         </span>
       </div>
     </div>
   );
 };
 
-
 export default Registration;
+
 

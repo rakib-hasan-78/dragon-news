@@ -6,14 +6,15 @@ import ScrollNews from './../ScrollNews/ScrollNews';
 import Nav from './../Nav/Nav';
 import User from './../User/User';
 import useLayoutConfig from '../../../customHooks/useLayoutConfig';
-
-
+import LoginDropdown from '../../authLayout/LoginDropdown/LoginDropdown';
+import { useAuth } from '../../../customHooks/useAuth';
 
 
 const Header = () => {
 
     const {getConfig, headerContent, navContent} = useLayoutConfig();
     const scrollNews = getConfig("scrollNews");
+    const {user} = useAuth();
     
     return (
 
@@ -52,7 +53,13 @@ const Header = () => {
                 <Nav></Nav>
                 </nav>
                 <div className='w-4/12 flex justify-end-safe'>
-                <User />
+                {
+                    user?
+                    <LoginDropdown/>
+                    :
+                    <User />
+
+                }
                 </div>
             </div>
             
