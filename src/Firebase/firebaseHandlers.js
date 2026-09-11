@@ -1,5 +1,5 @@
 
-import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
 import {auth} from "./Firebase.init";
 
 
@@ -37,4 +37,14 @@ const authStateHandler =(cb)=>{
     )
 }
 
-export {createUsers, authStateHandler};
+// logout from the application handler
+
+const logoutHandler = (cb) => {
+    return signOut(auth).then(cb)
+}
+
+export {
+    createUsers, 
+    authStateHandler,
+    logoutHandler
+};
