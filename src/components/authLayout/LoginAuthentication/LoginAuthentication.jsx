@@ -1,22 +1,52 @@
 import React from "react";
 import { Link } from "react-router";
+import useDataPicker from "../../../customHooks/useDataPicker";
+import { useAuth } from "../../../customHooks/useAuth";
+import { toast } from "react-toastify";
+
 
 const LoginAuthentication = () => {
+  const { emailsigningHandler, user} = useAuth();
+  const [data, setData, reset] = useDataPicker({
+    email:'',
+    password:''
+  })
+  const loginHandler = (e)=>{
+    e.preventDefault();
+    emailsigningHandler(data.email, data.password)
+    .then(result=>{
+      if (result.success) {
+        reset();
+        toast.success(`Welcome back, ${user.displayName.split(" ")[0]}!`,{
+          position:'top-center'
+        })
+      }
+      else if(result.code) {
+        toast.error(`${result.code.replace('auth/','').replaceAll("-", " ")}`)
+      }
+      else{
+        toast.error(result.error, {
+          position:'top-center'
+        })
+      }
+    })
+    
+  }
   return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="pt-7 flex items-center justify-center">
         <h2>login your account</h2>
       </div>
       <div className="card-body">
-        <form className="fieldset">
+        <form onSubmit={loginHandler} className="fieldset">
           <label className="label">Email</label>
-          <input type="email" className="input" placeholder="Email" />
+          <input value={data.email} onChange={(e)=>setData(e.target.name, e.target.value)} name="email" type="email" className="input" placeholder="Email" />
           <label className="label">Password</label>
-          <input type="password" className="input" placeholder="Password" />
+          <input value={data.password} onChange={(e)=>setData(e.target.name, e.target.value)} name="password" type="password" className="input" placeholder="Password" />
           <div>
             <a className="link link-hover">Forgot password?</a>
           </div>
-          <button className="btn btn-neutral mt-4">Login</button>
+          <button type="submit" className="btn btn-neutral mt-4">Login</button>
         </form>
       </div>
       <div className="flex flex-col px-4 space-y-2.5 pb-7">
@@ -85,3 +115,4 @@ const LoginAuthentication = () => {
 };
 
 export default LoginAuthentication;
+

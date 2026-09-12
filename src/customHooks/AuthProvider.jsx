@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { authStateHandler, createUsers, logoutHandler } from '../Firebase/firebaseHandlers';
+import { authStateHandler, createUsers, emailsigningHandler, logoutHandler } from '../Firebase/firebaseHandlers';
 
 
 export const Auth = createContext();
@@ -20,6 +20,7 @@ const AuthProvider = ({children}) => {
         user,
         setUser,
         createUsers,
+        emailsigningHandler,
         logoutHandler
       }
     return (
