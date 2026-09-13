@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { authStateHandler, createUsers, emailsigningHandler, logoutHandler } from '../Firebase/firebaseHandlers';
+import { authStateHandler, createUsers, emailsigningHandler, forgotPasswordHandler, logoutHandler } from '../Firebase/firebaseHandlers';
 
 
 export const Auth = createContext();
@@ -21,7 +21,8 @@ const AuthProvider = ({children}) => {
         setUser,
         createUsers,
         emailsigningHandler,
-        logoutHandler
+        logoutHandler,
+        forgotPasswordHandler
       }
     return (
         <Auth.Provider value={value}>

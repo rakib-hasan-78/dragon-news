@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 
 const LoginAuthentication = () => {
-  const { emailsigningHandler, user} = useAuth();
+  const { emailsigningHandler, user, forgotPasswordHandler} = useAuth();
   const [data, setData, reset] = useDataPicker({
     email:'',
     password:''
@@ -22,7 +22,9 @@ const LoginAuthentication = () => {
         })
       }
       else if(result.code) {
-        toast.error(`${result.code.replace('auth/','').replaceAll("-", " ")}`)
+        toast.error(`${result.code.replace('auth/','').replaceAll("-", " ")}`,{
+          position:'top-center'
+        })
       }
       else{
         toast.error(result.error, {
@@ -31,6 +33,9 @@ const LoginAuthentication = () => {
       }
     })
     
+  }
+  const forgetPassHandler =()=>{
+
   }
   return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -44,7 +49,7 @@ const LoginAuthentication = () => {
           <label className="label">Password</label>
           <input value={data.password} onChange={(e)=>setData(e.target.name, e.target.value)} name="password" type="password" className="input" placeholder="Password" />
           <div>
-            <a className="link link-hover">Forgot password?</a>
+            <span onClick={forgetPassHandler} className="link link-hover">Forgot password?</span>
           </div>
           <button type="submit" className="btn btn-neutral mt-4">Login</button>
         </form>

@@ -1,5 +1,5 @@
 
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import {auth} from "./Firebase.init";
 
 
@@ -49,6 +49,13 @@ const emailsigningHandler =(email,password)=>{
     })
 }
 
+// forgot password handler 
+
+const forgotPasswordHandler =(email)=>{
+
+    return sendPasswordResetEmail(auth, email)
+}
+
 // logout from the application handler
 
 const logoutHandler = (cb) => {
@@ -59,5 +66,6 @@ export {
     createUsers, 
     authStateHandler,
     logoutHandler,
-    emailsigningHandler
+    emailsigningHandler,
+    forgotPasswordHandler
 };
