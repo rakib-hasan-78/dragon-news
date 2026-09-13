@@ -35,7 +35,16 @@ const LoginAuthentication = () => {
     
   }
   const forgetPassHandler =()=>{
-
+    return forgotPasswordHandler(data.email)
+            .then(() => {
+              toast.info(`we sent a link to : ${data.email}`,{
+                position:'top-center'
+              })
+            }).catch((error) => {
+                toast.error(`${error.code.replace("auth/", " ").replaceAll("-", " ")}`,{
+                  position:'top-center'
+                })
+            })
   }
   return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
