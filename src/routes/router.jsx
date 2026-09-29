@@ -9,6 +9,9 @@ import News from "../pages/News/News";
 import CategoryNews from "../components/shared/CategoryNews/CategoryNews";
 import LoginAuthentication from "../components/authLayout/LoginAuthentication/LoginAuthentication";
 import Registration from "../components/authLayout/Registration/Registration";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
+import Dashboard from './../components/authLayout/Dashboard/Dashboard';
+
 
 
 const router = createBrowserRouter([
@@ -77,13 +80,23 @@ const router = createBrowserRouter([
                     footerHandle: true,
                 }
             },
+            {
+                path:"dashboard",
+                element: 
+                <PrivateRoute>
+                    <Dashboard />
+                </PrivateRoute>
+            },
 
             // --------------------
             // CATEGORY
             // --------------------
             {
                 path: "category/:id",
-                Component: CategoryNews,
+                element: 
+                <PrivateRoute>
+                   <CategoryNews /> 
+                </PrivateRoute>,
 
                 loader: async ({ params }) => {
                     const response = await fetch("/data/news.json");

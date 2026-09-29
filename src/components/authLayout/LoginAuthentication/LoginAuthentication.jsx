@@ -1,51 +1,81 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useDataPicker from "../../../customHooks/useDataPicker";
 import { useAuth } from "../../../customHooks/useAuth";
 import { toast } from "react-toastify";
 
-
 const LoginAuthentication = () => {
-  const { emailsigningHandler, user, forgotPasswordHandler} = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { 
+    emailsigningHandler, 
+    user, 
+    forgotPasswordHandler 
+  } = useAuth();
   const [data, setData, reset] = useDataPicker({
-    email:'',
-    password:''
-  })
-  const loginHandler = (e)=>{
+    email: "",
+    password: "",
+  });
+const loginHandler = (e) => {
     e.preventDefault();
+
     emailsigningHandler(data.email, data.password)
-    .then(result=>{
-      if (result.success) {
-        reset();
-        toast.success(`Welcome back, ${user.displayName.split(" ")[0]}!`,{
-          position:'top-center'
-        })
-      }
-      else if(result.code) {
-        toast.error(`${result.code.replace('auth/','').replaceAll("-", " ")}`,{
-          position:'top-center'
-        })
-      }
-      else{
-        toast.error(result.error, {
-          position:'top-center'
-        })
-      }
-    })
-    
-  }
-  const forgetPassHandler =()=>{
+        .then((result) => {
+
+            if (result.success) {
+
+                reset();
+
+                toast.success(
+                    `Welcome back, ${result.user.displayName.split(" ")[0]}!`,
+                    {
+                        position: "top-center"
+                    }
+                );
+
+                navigate(location.state || "/");
+            }
+
+            else if (result.code) {
+
+                toast.error(
+                    result.code
+                        .replace("auth/", "")
+                        .replaceAll("-", " "),
+                    {
+                        position: "top-center"
+                    }
+                );
+
+            }
+
+            else {
+
+                toast.error(result.error, {
+                    position: "top-center"
+                });
+
+            }
+        });
+};
+
+  const forgetPassHandler = () => {
     return forgotPasswordHandler(data.email)
-            .then(() => {
-              toast.info(`we sent a link to : ${data.email}`,{
-                position:'top-center'
-              })
-            }).catch((error) => {
-                toast.error(`${error.code.replace("auth/", " ").replaceAll("-", " ")}`,{
-                  position:'top-center'
-                })
-            })
-  }
+      .then(() => {
+        toast.info(`we sent a link to : ${data.email}`, {
+          position: "top-center",
+        });
+      })
+      .catch((error) => {
+        toast.error(
+          `${error.code.replace("auth/", " ").replaceAll("-", " ")}`,
+          {
+            position: "top-center",
+          },
+        );
+      });
+  };
+
   return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="pt-7 flex items-center justify-center">
@@ -54,13 +84,31 @@ const LoginAuthentication = () => {
       <div className="card-body">
         <form onSubmit={loginHandler} className="fieldset">
           <label className="label">Email</label>
-          <input value={data.email} onChange={(e)=>setData(e.target.name, e.target.value)} name="email" type="email" className="input" placeholder="Email" />
+          <input
+            value={data.email}
+            onChange={(e) => setData(e.target.name, e.target.value)}
+            name="email"
+            type="email"
+            className="input"
+            placeholder="Email"
+          />
           <label className="label">Password</label>
-          <input value={data.password} onChange={(e)=>setData(e.target.name, e.target.value)} name="password" type="password" className="input" placeholder="Password" />
+          <input
+            value={data.password}
+            onChange={(e) => setData(e.target.name, e.target.value)}
+            name="password"
+            type="password"
+            className="input"
+            placeholder="Password"
+          />
           <div>
-            <span onClick={forgetPassHandler} className="link link-hover">Forgot password?</span>
+            <span onClick={forgetPassHandler} className="link link-hover">
+              Forgot password?
+            </span>
           </div>
-          <button type="submit" className="btn btn-neutral mt-4">Login</button>
+          <button type="submit" className="btn btn-neutral mt-4">
+            Login
+          </button>
         </form>
       </div>
       <div className="flex flex-col px-4 space-y-2.5 pb-7">
@@ -115,13 +163,10 @@ const LoginAuthentication = () => {
           Login with GitHub
         </button>
         <span className="font-semibold text-center text-xs">
-            Dont’t Have An Account ?
-            <Link 
-            className="text-accent-secondary px-2"
-            to={`/auth/signup`}
-            >
+          Dont’t Have An Account ?
+          <Link className="text-accent-secondary px-2" to={`/auth/signup`}>
             Register
-            </Link>
+          </Link>
         </span>
       </div>
     </div>
@@ -129,4 +174,3 @@ const LoginAuthentication = () => {
 };
 
 export default LoginAuthentication;
-

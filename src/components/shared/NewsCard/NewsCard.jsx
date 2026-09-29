@@ -53,7 +53,6 @@
                         {news.details}  
                         </p>
                         <Link
-                        target='_blank'
                         to={`/category/${news.id}`}
                         className='text-orange-600/70 font-semibold pb-5'>
                         Read More  

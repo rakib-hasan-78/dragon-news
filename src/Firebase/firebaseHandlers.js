@@ -37,17 +37,26 @@ const authStateHandler =(cb)=>{
     )
 }
 // signing with email&password 
-const emailsigningHandler =(email,password)=>{
+const emailsigningHandler = (email, password) => {
     return signInWithEmailAndPassword(
-        auth, 
+        auth,
         email,
         password
-    ).then(()=>{
-        return {success: true}
-    }).catch((error)=>{
-        return {success:false, error:error.message, code: error.code}
+    )
+    .then((result) => {
+        return {
+            success: true,
+            user: result.user
+        };
     })
-}
+    .catch((error) => {
+        return {
+            success: false,
+            error: error.message,
+            code: error.code
+        };
+    });
+};
 
 // forgot password handler 
 
